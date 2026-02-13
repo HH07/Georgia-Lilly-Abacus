@@ -415,3 +415,32 @@ body {
     .app-header { padding: 0.8rem; border-radius: 1rem; }
     .badge { width: 40px; height: 40px; font-size: 1.2rem; }
 }
+
+/* --- readability override for GitHub Pages --- */
+
+/* Kill any pattern on the page root */
+html, body {
+  background: #f7f3ec !important;
+  background-image: none !important;
+  color: #2b1d0e !important;
+}
+
+/* If a pseudo element is drawing the stripes, disable it */
+body::before, body::after,
+html::before, html::after {
+  content: none !important;
+  background: none !important;
+}
+
+/* Common “app wrapper” ids and classes that sometimes carry the pattern */
+#root, #app, .app, .app-root, .root, .page, .container {
+  background: transparent !important;
+  background-image: none !important;
+}
+
+/* Make small text readable on any remaining dark areas */
+h1, h2, h3, p, span, label, button, a, .hud, .status, .legend, .caption {
+  color: #2b1d0e !important;
+  text-shadow: 0 1px 0 rgba(255,255,255,0.65) !important;
+}
+
