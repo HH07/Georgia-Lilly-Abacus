@@ -444,3 +444,9 @@ h1, h2, h3, p, span, label, button, a, .hud, .status, .legend, .caption {
   text-shadow: 0 1px 0 rgba(255,255,255,0.65) !important;
 }
 
+/* ---- force plain background ---- */
+
+html, body, #root, #app, .app, .background, .pattern {
+    background: #f5f5f5 !important;
+    background-image: none !important;
+}
