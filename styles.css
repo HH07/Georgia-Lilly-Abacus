@@ -175,7 +175,7 @@ body {
 }
 
 .btn-georgia { background: var(--rose-500); box-shadow: 0 10px 0 var(--rose-700); }
-.btn-lilly { background: var(--sky-500); box-shadow: 0 10px 0 var(--sky-700); }
+.btn-lily { background: var(--sky-500); box-shadow: 0 10px 0 var(--sky-700); }
 
 .btn-user:active {
     transform: translateY(6px);
