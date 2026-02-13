@@ -27,12 +27,16 @@
 
 body {
     font-family: 'Quicksand', sans-serif;
-    background-color: var(--amber-50);
-    color: var(--amber-900);
+    background-color: #f7f3ec;
+    color: #2b1d0e;
     min-height: 100vh;
     overflow: hidden;
     touch-action: none;
 }
+
+
+
+
 
 .wood-texture {
     /* Using CSS patterns to simulate wood without external assets */
