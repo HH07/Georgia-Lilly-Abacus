@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Georgia and Lilly Abacus</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600;700&display=swap" rel="stylesheet">
+<script type="importmap">
+{
+  "imports": {
+    "react": "https://esm.sh/react@^19.2.4",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.4/",
+    "react/": "https://esm.sh/react@^19.2.4/"
+  }
+}
+</script>
+<link rel="stylesheet" href="/index.css">
+</head>
+<body class="wood-texture">
+
+    <!-- Screen 1: Splash -->
+    <div id="screen-splash" class="screen active">
+        <div class="card splash-card animate-in">
+            <h1>Georgia & Lilly's Abacus</h1>
+            <p>Ready to learn some maths?</p>
+            <button id="btn-splash-start" class="btn-play" aria-label="Start App">
+                <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+            </button>
+            <p class="bounce-text">Tap to Start!</p>
+        </div>
+    </div>
+
+    <!-- Screen 2: User Chooser -->
+    <div id="screen-user" class="screen">
+        <div class="card user-card animate-in">
+            <h1>Hello!</h1>
+            <div class="chooser-prompt">
+                <p>Who is playing today?</p>
+                <button id="btn-hear-prompt" class="btn-icon" title="Hear question">
+                    <svg viewBox="0 0 24 24"><path d="M14 8.83v6.34L11.83 13H9v-2h2.83L14 8.83M16 4l-5 5H7v6h4l5 5V4zM18.5 12c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM16 2.5V4.6c2.89.86 5 3.54 5 6.4s-2.11 5.54-5 6.4v2.1c4-.9 7-4.5 7-8.5s-3-7.6-7-8.5z"/></svg>
+                </button>
+            </div>
+            <div class="user-buttons">
+                <button class="btn-user btn-georgia" data-user="Georgia">
+                    <span class="initial">G</span> Georgia
+                </button>
+                <button class="btn-user btn-lilly" data-user="Lilly">
+                    <span class="initial">L</span> Lilly
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Screen 3: Abacus App -->
+    <div id="screen-app" class="screen">
+        <header class="app-header">
+            <div class="user-info">
+                <div id="user-badge" class="badge">?</div>
+                <div>
+                    <h2 class="title">Georgia & Lilly's Abacus</h2>
+                    <p class="subtitle">Using as <span id="display-name">...</span> <button id="btn-change-user" class="link-btn">(change)</button></p>
+                </div>
+            </div>
+            <div class="settings">
+                <div class="setting-item">
+                    <span>Voice:</span>
+                    <button id="toggle-voice" class="toggle-btn">Off</button>
+                </div>
+                <div class="setting-item">
+                    <span>Sound:</span>
+                    <button id="toggle-sound" class="toggle-btn on">On</button>
+                </div>
+                <div class="setting-item">
+                    <span>Chatty:</span>
+                    <div class="lvl-group">
+                        <button class="lvl-btn" data-lvl="Quiet">Quiet</button>
+                        <button class="lvl-btn active" data-lvl="Normal">Normal</button>
+                        <button class="lvl-btn" data-lvl="Chatty">Chatty</button>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <main class="app-main">
+            <div class="stats">
+                <div id="total-value" class="big-number">0</div>
+                <div id="column-breakdown" class="breakdown">
+                    <span>Ones: <b>0</b></span>
+                    <span>Tens: <b>0</b></span>
+                    <span>Hundreds: <b>0</b></span>
+                    <span>Thousands: <b>0</b></span>
+                </div>
+            </div>
+
+            <div class="abacus-frame">
+                <svg id="abacus-svg" viewBox="0 0 700 500" preserveAspectRatio="xMidYMid meet"></svg>
+            </div>
+
+            <div id="feedback-bubble" class="feedback-bubble">
+                "Move the beads to start counting!"
+            </div>
+
+            <div class="action-footer">
+                <div id="lesson-ui" class="lesson-ui hidden">
+                    <div class="lesson-tag">ACTIVE LESSON: 2 + 2</div>
+                    <p id="lesson-text">Clear the abacus to start!</p>
+                    <div class="lesson-controls">
+                        <button id="btn-lesson-check" class="btn-check">Check My Work</button>
+                        <button id="btn-lesson-quit" class="btn-quit">Quit</button>
+                    </div>
+                </div>
+                <div id="free-play-ui" class="free-play-ui">
+                    <button id="btn-start-lesson" class="btn-lesson">
+                        <svg viewBox="0 0 24 24"><path d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
+                        Lesson: 2 plus 2
+                    </button>
+                    <button id="btn-reset" class="btn-reset">
+                        <svg viewBox="0 0 24 24"><path d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/></svg>
+                        Reset Abacus
+                    </button>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="app.js"></script>
+<script type="module" src="/index.tsx"></script>
+</body>
+</html>

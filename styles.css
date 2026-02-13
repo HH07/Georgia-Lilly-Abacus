@@ -1,0 +1,413 @@
+:root {
+    --amber-50: #fffbeb;
+    --amber-100: #fef3c7;
+    --amber-200: #fde68a;
+    --amber-500: #f59e0b;
+    --amber-600: #d97706;
+    --amber-700: #b45309;
+    --amber-800: #92400e;
+    --amber-900: #78350f;
+    --rose-500: #f43f5e;
+    --rose-700: #be123c;
+    --sky-500: #0ea5e9;
+    --sky-700: #0369a1;
+    --blue-500: #3b82f6;
+    --blue-600: #2563eb;
+    --green-500: #22c55e;
+    --green-600: #16a34a;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    -webkit-tap-highlight-color: transparent;
+    user-select: none;
+}
+
+body {
+    font-family: 'Quicksand', sans-serif;
+    background-color: var(--amber-50);
+    color: var(--amber-900);
+    min-height: 100vh;
+    overflow: hidden;
+    touch-action: none;
+}
+
+.wood-texture {
+    /* Using CSS patterns to simulate wood without external assets */
+    background: 
+        linear-gradient(27deg, #5c2f0a 5px, transparent 5px) 0 5px,
+        linear-gradient(207deg, #5c2f0a 5px, transparent 5px) 10px 0px,
+        linear-gradient(27deg, #4d2608 5px, transparent 5px) 0px 10px,
+        linear-gradient(207deg, #4d2608 5px, transparent 5px) 10px 5px,
+        linear-gradient(90deg, #6b360c 10px, transparent 10px),
+        #783e10;
+    background-size: 20px 20px;
+    background-blend-mode: multiply;
+}
+
+.screen {
+    display: none;
+    height: 100vh;
+    width: 100vw;
+    padding: 20px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.screen.active {
+    display: flex;
+}
+
+/* Splash and User Cards */
+.card {
+    background: white;
+    border-radius: 3rem;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+    padding: 3rem;
+    text-align: center;
+    border: 8px solid var(--amber-200);
+    max-width: 500px;
+    width: 90%;
+}
+
+.card h1 {
+    font-size: 2.5rem;
+    font-weight: 900;
+    margin-bottom: 0.5rem;
+}
+
+.animate-in {
+    animation: fadeInScale 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+@keyframes fadeInScale {
+    from { opacity: 0; transform: scale(0.9); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+.btn-play {
+    width: 120px;
+    height: 120px;
+    background: var(--amber-500);
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 2rem auto;
+    box-shadow: 0 15px 0 var(--amber-700);
+    transition: transform 0.1s, box-shadow 0.1s;
+}
+
+.btn-play:active {
+    transform: translateY(10px);
+    box-shadow: 0 5px 0 var(--amber-700);
+}
+
+.btn-play svg {
+    width: 60px;
+    fill: white;
+    margin-left: 8px;
+}
+
+.bounce-text {
+    font-weight: bold;
+    color: var(--amber-700);
+    animation: bounce 1s infinite ease-in-out;
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+/* User Selection */
+.chooser-prompt {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 2rem;
+}
+
+.btn-icon {
+    background: var(--amber-100);
+    border: none;
+    border-radius: 50%;
+    width: 44px;
+    height: 44px;
+    cursor: pointer;
+    padding: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-icon svg { fill: var(--amber-700); width: 24px; }
+
+.user-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.btn-user {
+    border: none;
+    border-radius: 2rem;
+    padding: 1.5rem;
+    color: white;
+    font-size: 1.8rem;
+    font-weight: 900;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    transition: transform 0.1s;
+}
+
+.btn-georgia { background: var(--rose-500); box-shadow: 0 10px 0 var(--rose-700); }
+.btn-lilly { background: var(--sky-500); box-shadow: 0 10px 0 var(--sky-700); }
+
+.btn-user:active {
+    transform: translateY(6px);
+    box-shadow: 0 4px 0 currentColor;
+}
+
+.initial {
+    width: 50px;
+    height: 50px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* App Header */
+.app-header {
+    width: 100%;
+    max-width: 900px;
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(10px);
+    border-radius: 2rem;
+    padding: 1rem 1.5rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    border-bottom: 6px solid var(--amber-200);
+    margin-bottom: 1rem;
+    z-index: 10;
+}
+
+.user-info { display: flex; align-items: center; gap: 12px; }
+.badge {
+    width: 54px;
+    height: 54px;
+    background: var(--amber-500);
+    border-radius: 50%;
+    color: white;
+    font-size: 1.8rem;
+    font-weight: 900;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: inset 0 2px 4px rgba(0,0,0,0.2);
+}
+
+.title { font-size: 1.2rem; font-weight: 900; color: var(--amber-900); }
+.subtitle { font-size: 0.9rem; color: var(--amber-700); font-weight: 600; }
+.link-btn {
+    background: none;
+    border: none;
+    color: var(--blue-600);
+    text-decoration: underline;
+    cursor: pointer;
+    font-weight: 700;
+}
+
+.settings { display: flex; flex-wrap: wrap; gap: 12px; }
+.setting-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.8rem;
+    font-weight: 800;
+    color: var(--amber-800);
+}
+
+.toggle-btn {
+    padding: 6px 14px;
+    border-radius: 1rem;
+    border: 2px solid #ccc;
+    background: #eee;
+    font-weight: 800;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.toggle-btn.on {
+    background: var(--green-500);
+    border-color: var(--green-600);
+    color: white;
+}
+
+.lvl-group {
+    display: flex;
+    background: #eee;
+    border-radius: 1rem;
+    padding: 3px;
+    border: 1px solid #ccc;
+}
+
+.lvl-btn {
+    padding: 4px 10px;
+    border: none;
+    background: none;
+    font-size: 0.75rem;
+    font-weight: 800;
+    border-radius: 0.8rem;
+    cursor: pointer;
+}
+
+.lvl-btn.active {
+    background: var(--amber-500);
+    color: white;
+}
+
+/* Main UI */
+.app-main {
+    width: 100%;
+    max-width: 800px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    gap: 0.5rem;
+    padding-bottom: 20px;
+}
+
+.big-number {
+    font-size: 7rem;
+    font-weight: 900;
+    line-height: 1;
+    color: var(--amber-900);
+    text-shadow: 0 4px 0 rgba(0,0,0,0.1);
+}
+
+.breakdown {
+    display: flex;
+    gap: 1rem;
+    font-weight: 700;
+    color: var(--amber-700);
+    font-size: 1rem;
+}
+
+.breakdown b { color: var(--amber-900); font-size: 1.1rem; }
+
+/* Abacus SVG */
+.abacus-frame {
+    width: 100%;
+    max-width: 700px;
+    filter: drop-shadow(0 20px 30px rgba(0,0,0,0.3));
+}
+
+#abacus-svg {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.feedback-bubble {
+    background: white;
+    padding: 1rem 2rem;
+    border-radius: 2rem;
+    box-shadow: 0 10px 15px rgba(0,0,0,0.1);
+    border: 3px solid var(--amber-100);
+    font-weight: 600;
+    font-style: italic;
+    text-align: center;
+    min-height: 4rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.action-footer {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.lesson-ui {
+    background: #eff6ff;
+    border: 4px solid var(--blue-500);
+    padding: 1rem;
+    border-radius: 2rem;
+    text-align: center;
+}
+
+.lesson-tag {
+    font-size: 0.75rem;
+    font-weight: 900;
+    letter-spacing: 0.1rem;
+    color: var(--blue-600);
+    margin-bottom: 5px;
+}
+
+#lesson-text {
+    font-weight: 700;
+    color: #1e3a8a;
+    margin-bottom: 10px;
+}
+
+.lesson-controls, .free-play-ui {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+}
+
+.btn-check, .btn-lesson {
+    background: var(--blue-500);
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 1.5rem;
+    font-weight: 800;
+    cursor: pointer;
+    box-shadow: 0 4px 0 var(--blue-600);
+}
+
+.btn-lesson svg { width: 20px; fill: white; vertical-align: middle; margin-right: 8px; }
+
+.btn-quit, .btn-reset {
+    background: #f3f4f6;
+    color: #4b5563;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 1.5rem;
+    font-weight: 800;
+    cursor: pointer;
+    box-shadow: 0 4px 0 #d1d5db;
+}
+
+.btn-reset svg { width: 20px; fill: #4b5563; vertical-align: middle; margin-right: 8px; }
+
+.hidden { display: none !important; }
+
+@media (max-width: 600px) {
+    .big-number { font-size: 4rem; }
+    .breakdown { font-size: 0.8rem; gap: 8px; }
+    .card { padding: 1.5rem; }
+    .app-header { padding: 0.8rem; border-radius: 1rem; }
+    .badge { width: 40px; height: 40px; font-size: 1.2rem; }
+}
